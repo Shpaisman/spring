@@ -3,10 +3,8 @@ package com.shpaisman.usuario.controller;
 import com.shpaisman.usuario.model.UsuarioDTO;
 import com.shpaisman.usuario.service.UsuarioService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
 
 @RestController
@@ -19,5 +17,16 @@ public class UsuarioController {
     public Mono<UsuarioDTO> buscarUsuarios(@PathVariable Integer id){
         return usuarioService.listarUsuarios(id);
     }
-
+    @PostMapping("/novo")
+    public Mono<UsuarioDTO> adicionarUsuario(@RequestBody UsuarioDTO usuario){
+        return usuarioService.adicionarUsuario(usuario);
+    }
+    @GetMapping
+    public Flux<UsuarioDTO> listarTodosUsuarios(){
+        return usuarioService.listarTodosUsuarios();
+    }
+    @PutMapping("/{id}")
+    public Mono<UsuarioDTO> updateUsuario(@RequestBody UsuarioDTO usuario, @PathVariable Integer id){
+        return usuarioService.updateUsuario(usuario, id);
+    }
 }

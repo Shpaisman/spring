@@ -1,5 +1,6 @@
 package com.shpaisman.usuario.modelentity;
 
+import com.shpaisman.usuario.model.UsuarioDTO;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -19,4 +20,10 @@ public class UsuarioEntity {
     private Integer id;
     @Column("nome")
     private String nome;
+
+    public UsuarioEntity(UsuarioDTO usuario){
+        super();
+        this.id = usuario.getId();
+        this.nome = usuario.getNome();
+    }
 }
