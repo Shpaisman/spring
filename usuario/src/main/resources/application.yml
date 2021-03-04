@@ -1,7 +1,7 @@
 spring:
   application:
-    name: 'usuario';
+    name: usuario;
   r2dbc:
-    url: r2dbc:postgresql://localhost:5432/postgre?schema=usuario
+    url: r2dbc:postgresql://localhost:5433/postgres?schema=usuario
     username: postgres
-    password: root
+    password: Shpaisman1!
