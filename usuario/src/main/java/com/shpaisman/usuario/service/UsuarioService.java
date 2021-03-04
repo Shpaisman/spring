@@ -41,4 +41,9 @@ public class UsuarioService {
                 )
                 .flatMap(UsuarioDTO::fromEntity);
     }
+    public Mono<Void> deleteUsuario(Integer id){
+        return usuarioRepository.findById(id)
+                .flatMap(x->
+                        usuarioRepository.delete(x));
+    }
 }
