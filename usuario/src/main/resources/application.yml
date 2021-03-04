@@ -4,4 +4,4 @@ spring:
   r2dbc:
     url: r2dbc:postgresql://localhost:5433/postgres?schema=usuario
     username: postgres
-    password: Shpaisman1!
+    password: root

@@ -12,12 +12,12 @@ import reactor.core.publisher.Mono;
 public class UsuarioService {
     @Autowired
     private UsuarioRepository usuarioRepository;
-    public Mono<UsuarioDTO> listarUsuarios(Integer id){
+    public Mono<UsuarioDTO> getUsuario(Integer id){
         return usuarioRepository.findById(id)
                 .flatMap(UsuarioDTO::fromEntity);
     }
 
-    public Mono<UsuarioDTO> adicionarUsuario(UsuarioDTO usuario){
+    public Mono<UsuarioDTO> postUsuario(UsuarioDTO usuario){
         return Mono.just(new UsuarioEntity(usuario))
                 .flatMap(x->{
                     UsuarioEntity entity = (UsuarioEntity) x;
@@ -26,7 +26,7 @@ public class UsuarioService {
                 .flatMap(UsuarioDTO::fromEntity);
     }
 
-    public Flux<UsuarioDTO> listarTodosUsuarios(){
+    public Flux<UsuarioDTO> getUsuarios(){
         return usuarioRepository.findAll()
                 .flatMap(UsuarioDTO::fromEntity);
     }

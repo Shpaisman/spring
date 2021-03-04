@@ -14,25 +14,30 @@ import reactor.core.publisher.Mono;
 public class UsuarioController {
     @Autowired
     private UsuarioService usuarioService;
+
     @GetMapping("/{id}")
-    public Mono<UsuarioDTO> buscarUsuarios(@PathVariable Integer id){
-        return usuarioService.listarUsuarios(id);
+    public Mono<UsuarioDTO> getUsuario(@PathVariable Integer id) {
+        return usuarioService.getUsuario(id);
     }
+
     @PostMapping("/novo")
-    public Mono<UsuarioDTO> adicionarUsuario(@RequestBody UsuarioDTO usuario){
-        return usuarioService.adicionarUsuario(usuario);
+    public Mono<UsuarioDTO> postUsuario(@RequestBody UsuarioDTO usuario) {
+        return usuarioService.postUsuario(usuario);
     }
+
     @GetMapping
-    public Flux<UsuarioDTO> listarTodosUsuarios(){
-        return usuarioService.listarTodosUsuarios();
+    public Flux<UsuarioDTO> getUsuarios(){
+        return usuarioService.getUsuarios();
     }
+
     @PutMapping("/{id}")
-    public Mono<UsuarioDTO> updateUsuario(@RequestBody UsuarioDTO usuario, @PathVariable Integer id){
+    public Mono<UsuarioDTO> updateUsuario(@RequestBody UsuarioDTO usuario, @PathVariable Integer id) {
         return usuarioService.updateUsuario(usuario, id);
     }
+
     @DeleteMapping("/{id}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
-    public Mono<Void> deleteUsuario(@PathVariable Integer id){
+    public Mono<Void> deleteUsuario(@PathVariable Integer id) {
         return usuarioService.deleteUsuario(id);
     }
 }
